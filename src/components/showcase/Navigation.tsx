@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Wrench, Brain, BarChart3, Award, Menu, X } from "lucide-react";
+import { Wrench, Brain, BarChart3, Award, Menu, X, Settings } from "lucide-react";
 import cortaLogo from "@/assets/corta-logo.png";
 
 const navItems = [
   { label: "AI Features", href: "#features", icon: Brain },
+  { label: "Platform", href: "#platform", icon: Settings },
   { label: "Architecture", href: "#architecture", icon: Wrench },
   { label: "Benefits", href: "#benefits", icon: BarChart3 },
   { label: "Standards", href: "#standards", icon: Award },
