@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  corta-maintenance:
+    build: .
+    ports:
+      - "7701:80"
+    restart: unless-stopped
+    container_name: corta-maintenance
