@@ -5,6 +5,17 @@ import {
   Settings, Battery, PieChart, Type,
 } from "lucide-react";
 
+import predictiveImg from "@/assets/features/predictive-maintenance.jpg";
+import triageImg from "@/assets/features/smart-triage.jpg";
+import rcaImg from "@/assets/features/root-cause-analysis.jpg";
+import chatbotImg from "@/assets/features/ai-chatbot.jpg";
+import sparePartsImg from "@/assets/features/spare-parts.jpg";
+import anomalyImg from "@/assets/features/anomaly-detection.jpg";
+import handoverImg from "@/assets/features/shift-handover.jpg";
+import energyImg from "@/assets/features/energy-optimization.jpg";
+import reportsImg from "@/assets/features/reports-analytics.jpg";
+import nlSearchImg from "@/assets/features/nl-search.jpg";
+
 interface FeatureImpact {
   metric: string;
   label: string;
@@ -19,6 +30,7 @@ interface Feature {
   description: string;
   color: string;
   icon: React.ElementType;
+  image: string;
   impact: FeatureImpact[];
   capabilities: string[];
 }
@@ -31,6 +43,7 @@ const features: Feature[] = [
     description: "Analyze machine sensor data, MTBF trends, and failure history to predict breakdowns before they happen. Automatically generates preventive work orders based on predicted failure windows.",
     color: "--maintenance-blue",
     icon: Brain,
+    image: predictiveImg,
     impact: [
       { metric: "85%", label: "Fewer Unplanned Stops", description: "Predict failures before they cause downtime", icon: TrendingUp },
       { metric: "40%", label: "Cost Reduction", description: "Shift from reactive to proactive maintenance", icon: Gauge },
@@ -46,6 +59,7 @@ const features: Feature[] = [
     description: "Auto-assign priority, estimated hours, and the right technician based on historical patterns, skill matching, and current workload distribution.",
     color: "--maintenance-green",
     icon: ClipboardList,
+    image: triageImg,
     impact: [
       { metric: "60%", label: "Faster Assignment", description: "Eliminate manual triage bottlenecks", icon: Clock },
       { metric: "95%", label: "Skill Match Rate", description: "Right technician for the right job every time", icon: Target },
@@ -61,6 +75,7 @@ const features: Feature[] = [
     description: "When a failure code is logged, AI suggests probable root causes and corrective actions based on past incidents, equipment history, and industry knowledge bases.",
     color: "--maintenance-red",
     icon: AlertTriangle,
+    image: rcaImg,
     impact: [
       { metric: "70%", label: "Faster Resolution", description: "AI-guided diagnosis cuts investigation time", icon: Clock },
       { metric: "45%", label: "Repeat Failure Reduction", description: "Address root causes, not just symptoms", icon: Shield },
@@ -76,6 +91,7 @@ const features: Feature[] = [
     description: "Let engineers ask questions like 'What's the maintenance history for CNC-001?' or 'How do I replace the hydraulic pump?' and get instant answers from SOPs and documents.",
     color: "--maintenance-purple",
     icon: MessageSquare,
+    image: chatbotImg,
     impact: [
       { metric: "5x", label: "Faster Info Access", description: "Instant answers vs. manual document search", icon: Clock },
       { metric: "80%", label: "Self-Service Rate", description: "Technicians resolve queries without supervisor help", icon: Target },
@@ -91,6 +107,7 @@ const features: Feature[] = [
     description: "Predict stock needs based on maintenance schedules, failure trends, and supplier lead times to prevent stockouts and reduce carrying costs.",
     color: "--maintenance-orange",
     icon: Package,
+    image: sparePartsImg,
     impact: [
       { metric: "90%", label: "Stockout Prevention", description: "Never miss a repair due to missing parts", icon: Shield },
       { metric: "25%", label: "Inventory Cost Reduction", description: "Optimize stock levels with demand forecasting", icon: TrendingUp },
@@ -106,6 +123,7 @@ const features: Feature[] = [
     description: "Flag unusual inspection results or patterns that deviate from normal baselines. Detect subtle degradation trends before they become critical failures.",
     color: "--maintenance-cyan",
     icon: ScanLine,
+    image: anomalyImg,
     impact: [
       { metric: "3x", label: "Early Detection", description: "Catch anomalies weeks before failure", icon: AlertCircle },
       { metric: "95%", label: "Detection Accuracy", description: "Minimize false positives with adaptive baselines", icon: Target },
@@ -121,6 +139,7 @@ const features: Feature[] = [
     description: "Auto-generate comprehensive shift summaries from work orders completed, incidents reported, open items, and safety observations — no more manual handover notes.",
     color: "--maintenance-teal",
     icon: FileText,
+    image: handoverImg,
     impact: [
       { metric: "15min", label: "Time Saved per Shift", description: "Eliminate manual report writing", icon: Clock },
       { metric: "100%", label: "Coverage", description: "Nothing missed in shift transitions", icon: Shield },
@@ -136,6 +155,7 @@ const features: Feature[] = [
     description: "Analyze energy consumption patterns across equipment and production schedules. Recommend efficiency improvements and detect energy waste from degrading equipment.",
     color: "--maintenance-yellow",
     icon: Zap,
+    image: energyImg,
     impact: [
       { metric: "20%", label: "Energy Savings", description: "Identify and eliminate consumption waste", icon: TrendingUp },
       { metric: "$50K+", label: "Annual Cost Reduction", description: "Typical savings for mid-size facility", icon: Gauge },
@@ -151,6 +171,7 @@ const features: Feature[] = [
     description: "Comprehensive reporting with AI-powered insights. Your AI assistant in Reports provides deeper data access, trend analysis, and actionable recommendations.",
     color: "--maintenance-indigo",
     icon: BarChart3,
+    image: reportsImg,
     impact: [
       { metric: "50+", label: "Report Templates", description: "Pre-built reports for every maintenance KPI", icon: FileText },
       { metric: "AI", label: "Powered Insights", description: "Natural language report generation", icon: Brain },
@@ -166,6 +187,7 @@ const features: Feature[] = [
     description: "Let users search across machines, work orders, parts, and documents using plain language queries. 'Show me all overdue PMs for Building A' just works.",
     color: "--maintenance-amber",
     icon: SearchIcon,
+    image: nlSearchImg,
     impact: [
       { metric: "10x", label: "Faster Search", description: "Natural language vs. filter-based queries", icon: Clock },
       { metric: "All", label: "Data Sources", description: "Machines, WOs, parts, docs — unified search", icon: Target },
@@ -193,18 +215,17 @@ const FeatureShowcase = () => {
             <div key={feat.id} id={feat.id} className="scroll-mt-8">
               {/* Feature Header */}
               <div className={`flex flex-col ${idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-10 items-center mb-12`}>
-                {/* Icon display instead of screenshot */}
+                {/* Feature Image */}
                 <div className="lg:w-2/5">
-                  <div className="module-card p-12 flex items-center justify-center">
-                    <div
-                      className="p-8 rounded-2xl"
-                      style={{
-                        background: `hsl(var(${feat.color}) / 0.1)`,
-                        border: `1px solid hsl(var(${feat.color}) / 0.2)`,
-                      }}
-                    >
-                      <feat.icon className="w-20 h-20" style={{ color: `hsl(var(${feat.color}))` }} />
-                    </div>
+                  <div className="module-card p-2 overflow-hidden">
+                    <img
+                      src={feat.image}
+                      alt={feat.title}
+                      loading="lazy"
+                      width={1024}
+                      height={768}
+                      className="w-full h-auto rounded-lg object-cover aspect-[4/3]"
+                    />
                   </div>
                 </div>
 
