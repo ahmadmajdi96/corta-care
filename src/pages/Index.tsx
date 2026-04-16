@@ -2,6 +2,7 @@ import Navigation from "@/components/showcase/Navigation";
 import HeroSection from "@/components/showcase/HeroSection";
 import SystemArchitecture from "@/components/showcase/SystemArchitecture";
 import FeatureShowcase from "@/components/showcase/FeatureShowcase";
+import CoreFeatures from "@/components/showcase/CoreFeatures";
 import BenefitsSection from "@/components/showcase/BenefitsSection";
 import IndustryStandards from "@/components/showcase/IndustryStandards";
 import Footer from "@/components/showcase/Footer";
@@ -12,6 +13,7 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <FeatureShowcase />
+      <CoreFeatures />
       <SystemArchitecture />
       <BenefitsSection />
       <IndustryStandards />
